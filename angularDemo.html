@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<style>
+	*{
+		font-family: '微软雅黑'
+	}
+</style>
+</head>
+<body>
+
+<!-- <div ng-app="">
+ 	<p>名字 : <input type="text" ng-model="name1"></p>
+ 	<h1>Hello {{name1}}</h1>
+
+ 	<p>算数结果是{{8+2}}{{name1}}</p>
+</div> -->
+<div ng-app="box" ng-controller="test">
+	<input type="text" ng-model="name">
+	<input type="text" ng-model="love">
+	{{name+' loves '+love}}
+	<br><br><br>
+	<hr>
+	单价（元）：<input type="text" ng-model="n"><br><br>
+	个数（个）：<input type="text" ng-model="m">
+	<p>总价：{{n*m}}元</p>
+	<hr>
+	<ul>
+		<li ng-repeat="x in arr">
+			{{x.name+'的年龄是'+x.age+'岁'}}
+		</li>
+	</ul>
+
+	<hr>
+	<moon></moon>
+
+	<hr>
+	<p>测试过滤器（uppercase）:{{name|uppercase}}</p>
+	<p>测试过滤器（currency）：{{n|currency}}</p>
+	<p>测试过滤器（orderBy）:</p>
+	<ul>
+		<li ng-repeat=" x in arr | orderBy:'age'">
+			{{x.name+'的年龄是'+x.age+'岁'}}
+		</li>
+	</ul>
+
+	<hr>
+	<p><input type="text" ng-model="input"></p>
+	<ul>
+		<li ng-repeat="x in arr | filter:input">{{x.name+'的年龄是：'+x.age+'岁'}}</li>
+	</ul>
+</div>
+<script>
+	var app=angular.module('box',[]);
+	app.controller('test',function($scope){
+		$scope.name='jingxz';
+		$scope.love='fly';
+		$scope.m=6;
+		$scope.n=2;
+		$scope.arr=[{name:'xz',age:10},{name:'ll',age:20},{name:'wh',age:30},{name:'xzzz',age:97}];
+	});
+
+	app.directive('moon',function(){
+		return{
+			template:'<div>我把自定义的‘moon’替换成了一个‘div’</div>'
+		};
+	});
+</script>
+</body>
+</html>
